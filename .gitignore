@@ -128,3 +128,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+examples/.DS_Store
+examples/web_estatico/.DS_Store
