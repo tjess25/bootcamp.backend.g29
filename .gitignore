@@ -130,3 +130,5 @@ dist
 .pnp.*
 examples/.DS_Store
 examples/web_estatico/.DS_Store
+.DS_Store
+myapp/node_modules

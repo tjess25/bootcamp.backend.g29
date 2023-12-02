@@ -1,5 +1,6 @@
 // routes
 const userRoutes = require('./src/routes/user/index')
+const producRoutes = require('./src/routes/product')
 const db = require('./src/helpers/db')
 
 const express = require('express')
@@ -50,7 +51,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/user', userRoutes)
-//app.use('/product', producRoutes)
+app.use('/product', producRoutes)
 
 app.use((resp, req, res, next) => {
   res.status(resp.status).send(resp.send)

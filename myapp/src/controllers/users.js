@@ -21,7 +21,7 @@ module.exports = {
             next({ status: 404, send: { msg: "Usuario no encontrado" } })
             //return res.status(404).send({msg: "Usuario no encontrado"})
         })*/
-        const { id } = req.params
+       
         /*Users.findById(id).then((data) => {
             next({ status: 200, send: { msg: "Usuario encontrado", data: data } })
         }).catch((err) => {
@@ -31,13 +31,18 @@ module.exports = {
             if (err) next({ status: 404, send: { msg: "Usuario no encontrado" } })
             next({ status: 200, send: { msg: "Usuario encontrado", data: data } })
         })*/
+        const { id } = req.params
         let users = await Users.findById(id)
         if (!users) next({ status: 404, send: { msg: "Usuario no encontrado" } })
-        next({ status: 200, send: { msg: "Usuario encontrado", data: u } })
+        next({ status: 200, send: { msg: "Usuario encontrado", data: users } })
     },
     post: async(req, res, next) => {
-        let user = await Users.create(req.body)
-        if (!user) next({ status: 400, send: { msg: "Usuario no creado" } })
-        next({ status: 201, send: { msg: "Usuario creado", data: user } })
+        try {
+            let user = await Users.create(req.body)
+            next({ status: 201, send: { msg: "Usuario creado", data: user } }) 
+        } catch (error) {
+            next({ status: 400, send: { msg: "Usuario no creado", err: error } })
+        }
+        
     }
 }

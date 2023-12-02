@@ -15,12 +15,12 @@ router.delete('/', (req, res) => {
     res.status(200).send('Hello Word Delete Router!')
 })
 
-router.use((req, res, next) => {
+/*router.use((req, res, next) => {
     if (!req.body.password || !req.body.email) {
       res.status(400).send({msg: "El Email y Password son requeridos"})
     }
     next()
-})
+})*/
 
 router.post('/', userController.post)
 
