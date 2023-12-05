@@ -8,7 +8,6 @@ router.post('/', userController.post)
 router.put('/:id', userController.put)
 router.delete('/:id', userController.delete)
 
-//router.post('/login', userController.login)
 //router.post('/logout', userController.logout)
 
 module.exports = router
